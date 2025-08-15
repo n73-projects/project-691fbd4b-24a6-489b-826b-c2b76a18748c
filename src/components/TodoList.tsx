@@ -35,19 +35,19 @@ export function TodoList() {
   const totalCount = todos.length;
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div className="max-w-2xl mx-auto p-6 bg-gray-900 rounded-lg shadow-2xl border border-gray-700">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Daily Tasks</h1>
-        <p className="text-gray-600">
+        <h1 className="text-3xl font-bold text-white mb-2">Daily Tasks</h1>
+        <p className="text-gray-300">
           Stay organized and productive with your daily to-do list
         </p>
-        <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-          <p className="text-sm text-blue-700 font-medium">
+        <div className="mt-4 p-3 bg-blue-900/30 rounded-lg border border-blue-800/50">
+          <p className="text-sm text-blue-300 font-medium">
             Progress: {completedCount} of {totalCount} tasks completed
           </p>
-          <div className="mt-2 w-full bg-blue-200 rounded-full h-2">
+          <div className="mt-2 w-full bg-blue-950 rounded-full h-2">
             <div 
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+              className="bg-blue-500 h-2 rounded-full transition-all duration-300"
               style={{ width: `${(completedCount / totalCount) * 100}%` }}
             />
           </div>
@@ -58,38 +58,38 @@ export function TodoList() {
         {todos.map((todo) => (
           <div 
             key={todo.id}
-            className={`flex items-center space-x-3 p-3 rounded-lg border transition-all duration-200 hover:bg-gray-50 ${
+            className={`flex items-center space-x-3 p-3 rounded-lg border transition-all duration-200 hover:bg-gray-800 ${
               todo.completed 
-                ? 'bg-green-50 border-green-200' 
-                : 'bg-white border-gray-200'
+                ? 'bg-green-900/30 border-green-700/50' 
+                : 'bg-gray-800 border-gray-700'
             }`}
           >
             <Checkbox
               id={`todo-${todo.id}`}
               checked={todo.completed}
               onCheckedChange={() => toggleTodo(todo.id)}
-              className="data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600"
+              className="data-[state=checked]:bg-green-600 data-[state=checked]:border-green-600 border-gray-600"
             />
             <label 
               htmlFor={`todo-${todo.id}`}
               className={`flex-1 text-sm font-medium cursor-pointer transition-all duration-200 ${
                 todo.completed 
                   ? 'line-through text-gray-500' 
-                  : 'text-gray-900'
+                  : 'text-gray-100'
               }`}
             >
               {todo.text}
             </label>
             {todo.completed && (
-              <span className="text-xs text-green-600 font-medium">✓ Done</span>
+              <span className="text-xs text-green-400 font-medium">✓ Done</span>
             )}
           </div>
         ))}
       </div>
 
-      <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-        <h3 className="text-sm font-semibold text-gray-700 mb-2">Tips for Success:</h3>
-        <ul className="text-xs text-gray-600 space-y-1">
+      <div className="mt-6 p-4 bg-gray-800 rounded-lg border border-gray-700">
+        <h3 className="text-sm font-semibold text-gray-200 mb-2">Tips for Success:</h3>
+        <ul className="text-xs text-gray-400 space-y-1">
           <li>• Break large tasks into smaller, actionable steps</li>
           <li>• Prioritize urgent and important tasks first</li>
           <li>• Check off completed items for motivation</li>
